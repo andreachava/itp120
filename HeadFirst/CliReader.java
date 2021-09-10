@@ -1,4 +1,4 @@
-import java.io*;
+import java.io.*;
 
 public class CliReader {
     public String input(String prompt) {
