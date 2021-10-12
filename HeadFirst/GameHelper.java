@@ -23,3 +23,4 @@ public class GameHelper {
      }
      return inputLine.toLowerCase();
 }
+}
