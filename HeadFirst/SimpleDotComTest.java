@@ -6,3 +6,4 @@ class SimpleDotComTest {
         String stringGuess = "2";
         test.checkYourself(stringGuess);
 }
+}
