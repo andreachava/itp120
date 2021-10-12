@@ -1,8 +1,6 @@
-import java.util.Scanner; 
-
 class SimpleDotCom {
     int [] locationCells;
-    int numOfHits;
+    int numOfHits = 0;
 
     String checkYourself (String stringGuess) {
         int guess = Integer.parseInt(stringGuess);
@@ -20,8 +18,8 @@ class SimpleDotCom {
         System.out.println(result);
         return result;
     }
-    void setLocationCells(int[] cellLocations) {
-
+    void setLocationCells(int[] locs) {
+        locationCells = locs;
     }
 }
 
@@ -33,13 +31,14 @@ class SimpleDotComGame {
         int randomNum = (int)(Math.random()*5);
         int [] locations = {randomNum, randomNum+1, randomNum+2};
         game.setLocationCells(locations);
-        boolean isAlive = True;
-        while (isAlive == True) {
+        boolean isAlive = true;
+        while (isAlive == true) {
             String guess = helper.getUserInput("Enter a number from 0 to 7: ");
             String result = game.checkYourself(guess);
             numOfGuesses++;
             if (result.equals("kill")){
-                
+                isAlive = false;
+                System.out.println("You took " + numOfGuesses +" guesses");
             }
         }
     }
