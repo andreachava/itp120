@@ -1,32 +1,28 @@
-//ArrayList<int> locations = new ArrayList<int>();
+//ArrayList<String> locations = new ArrayList<String>();
 import java.util.ArrayList;
 
 class DotCom {
-    int [] locationCells;
-    int numOfHits = 0;
-    
     private ArrayList<String> locationCells;
+    private int numOfHits;
 
-    String checkYourself (String stringGuess) {
-        int guess = Integer.parseInt(stringGuess);
+    void setLocationCells(ArrayList<String> loc) {
+        locationCells = loc;
+    }
+
+    String checkYourself (String userInput) {
         String result = "miss";
-        for (int cell : locationCells){
-            if (guess == cell) {
+        int index = locationCells.indexOf(userInput);
+        if (index >= 0) {
+            locationCells.remove(index);
+            if (locationCells.isEmpty()) {
+                result = "kill";
+            } else {
                 result = "hit";
-                numOfHits++;
-                break;
             }
-        }
-        if (numOfHits == locationCells.length) {
-            result = "kill";
         }
         System.out.println(result);
         return result;
     }
-    void setLocationCells(int[] locs) {
-        locationCells = locs;
-    }
-}
 
 class DotComGame {
     public static void main(String [] args) {
@@ -47,4 +43,5 @@ class DotComGame {
             }
         }
     }
+}
 }
