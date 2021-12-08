@@ -7,19 +7,17 @@ public class MiniMusicCmdLine {
             System.out.println("Don't forget instrument and note args");
         } else {
             int instrument  = Integer.parseInt(args[0]);
-            //int note = Integer.parseInt(args[1]);
-            //mini.play(instrument, note);
-            int [] song = {80, 80, 80, 60};
-            
-                for (int thing : song) {
-                    mini.play(instrument, song[num], 1000);
-                }
-            
-            }
+            int rest = Integer.parseInt(args[1]); //now the two variables the user gives dictate the instrument and rest
+            int [] song = {80, 80, 80, 60, 70, 80, 85, 95, 100, 60};
+            for (int x = 0;x <10;x++) { //for loop iterates through array to play each note in song[]
+                System.out.println(song[x]);
+                mini.play(instrument, song[x], rest);
+            } 
+            System.exit(0);
         }
-    
+    }
 
-    public void play(int instrument, int note, int rest) {
+    void play(int instrument, int note, int rest) { //added extra parameter rest to let user pick how much time is in between each note
 
         try {
             Sequencer player = MidiSystem.getSequencer();
@@ -46,7 +44,7 @@ public class MiniMusicCmdLine {
             player.setSequence(seq);
             player.start();
 
-            Thread.sleep(rest);
+            Thread.sleep(rest); //inputs pre-set time in milliseconds
 
         } catch (Exception ex) {ex.printStackTrace();}
     }
