@@ -3,16 +3,23 @@ import javax.sound.midi.*;
 public class MiniMusicCmdLine {
     public static void main(String[] args) {
         MiniMusicCmdLine mini = new MiniMusicCmdLine();
-        if (args.length < 2) {
+        if (args.length < 1) {
             System.out.println("Don't forget instrument and note args");
         } else {
             int instrument  = Integer.parseInt(args[0]);
-            int note = Integer.parseInt(args[1]);
-            mini.play(instrument, note);
+            //int note = Integer.parseInt(args[1]);
+            //mini.play(instrument, note);
+            int [] song = {80, 80, 80, 60};
+            
+                for (int thing : song) {
+                    mini.play(instrument, song[num], 1000);
+                }
+            
+            }
         }
-    }
+    
 
-    public void play(int instrument, int note) {
+    public void play(int instrument, int note, int rest) {
 
         try {
             Sequencer player = MidiSystem.getSequencer();
@@ -38,6 +45,8 @@ public class MiniMusicCmdLine {
             track.add(noteOff);
             player.setSequence(seq);
             player.start();
+
+            Thread.sleep(rest);
 
         } catch (Exception ex) {ex.printStackTrace();}
     }
