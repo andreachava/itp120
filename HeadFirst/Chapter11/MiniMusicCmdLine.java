@@ -8,8 +8,8 @@ public class MiniMusicCmdLine {
         } else {
             int instrument  = Integer.parseInt(args[0]);
             int rest = Integer.parseInt(args[1]); //now the two variables the user gives dictate the instrument and rest
-            int [] song = {80, 80, 80, 60, 70, 80, 85, 95, 100, 60};
-            for (int x = 0;x <10;x++) { //for loop iterates through array to play each note in song[]
+            int [] song = {52, 42, 32, 42, 52, 88};
+            for (int x = 0;x <6;x++) { //for loop iterates through array to play each note in song[]
                 System.out.println(song[x]);
                 mini.play(instrument, song[x], rest);
             } 
